@@ -1,5 +1,12 @@
 <h1>ツイート一覧</h1>
 <table>
-  
+  <tr>
+    <th>内容</th>
+  </tr>
+<% @tweets.each do |tweet| %>
+<tr>
+  <td><%= tweet.content %></td>
+<% end %>
 </table>
-<%= @tweets %>
+<br>
+<%= link_to '新しくツイートを投稿する', new_tweet_path %>
