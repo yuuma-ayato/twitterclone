@@ -6,11 +6,15 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
   end
   def create
-    Tweet.create(tweet_params)
-    redirect_to new_tweet_path
+    @tweet = Tweet.new(tweet_params)
+    if @tweet.save
+      redirect_to new_tweet_path, notice: "ツイートを投稿しました！"
+    else
+      render :new
+    end
   end
   def show
-    Tweet.find(params[:id])
+    @tweet = Tweet.find(params[:id])
   end
   private
   def tweet_params
