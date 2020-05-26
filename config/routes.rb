@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  resources :tweets
+  root 'tweets#index'
+  resources :tweets do
+    collection do
+      post :confirm
+    end
+  end
 end
